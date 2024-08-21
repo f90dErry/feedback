@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
@@ -9,7 +10,9 @@ function App() {
     const [feedback, setFeedback] = useState(FeedbackData)
 
     const addFeedback = (newFeedback) => {
+      newFeedback.id = uuidv4()
       console.log(newFeedback)
+      setFeedback([newFeedback, ...feedback])
     }
 
     const deleteFeedback = (id) => {
